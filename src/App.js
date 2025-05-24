@@ -20,110 +20,43 @@ export default function LearnifyBrochureSite() {
   return (
     <div style={{ fontFamily: 'Arial, sans-serif', color: '#444' }}>
       {/* Hero / Landing Section */}
-      <section
-        style={{
-          width: '100vw',
-          height: '100vh',
-          textAlign: 'center',
-          backgroundImage: `url("https://png.pngtree.com/thumb_back/fh260/background/20190223/ourmid/pngtree-fresh-book-learning-advertising-background-backgroundyellow-backgroundbooktextbookknow-howrainbowstudentaircraft-image_73518.jpg")`,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: '120%',
-          backgroundPosition: 'center center',
-          position: 'relative',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        {/* Navigation Bar */}
-        <nav
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            background: 'rgb(255, 255, 255)',
-            backdropFilter: 'blur(10px)',
-            zIndex: 1000,
-            padding: '10px 20px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-          }}
+<section className="hero-section">
+  {/* Navigation Bar */}
+  <nav className="navbar">
+    <img src={heroImage} alt="Bodharnav Logo" className="navbar-logo" />
+    <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+      <div className="bar"></div>
+      <div className="bar"></div>
+      <div className="bar"></div>
+    </div>
+    <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
+      {[
+        { label: 'About Us', ref: aboutRef },
+        { label: 'Why Choose Us', ref: whyRef },
+        { label: 'Our Programs', ref: programsRef },
+        { label: 'Mission & Vision', ref: missionRef },
+        { label: 'Contact', ref: contactRef },
+      ].map((item) => (
+        <button
+          key={item.label}
+          onClick={() => scrollToRef(item.ref)}
+          className="nav-btn"
         >
-          <img
-            src={heroImage}
-            alt="Bodharnav Logo"
-            style={{ maxHeight: '70px', width: 'auto' }}
-          />
-          <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
-            <div className="bar"></div>
-            <div className="bar"></div>
-            <div className="bar"></div>
-          </div>
-          <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
-            {[
-              { label: 'About Us', ref: aboutRef },
-              { label: 'Why Choose Us', ref: whyRef },
-              { label: 'Our Programs', ref: programsRef },
-              { label: 'Mission & Vision', ref: missionRef },
-              { label: 'Contact', ref: contactRef },
-            ].map((item) => (
-              <button
-                key={item.label}
-                onClick={() => scrollToRef(item.ref)}
-                className="nav-btn"
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-        </nav>
+          {item.label}
+        </button>
+      ))}
+    </div>
+  </nav>
+</section>
 
-        {/* Hero Content */}
-        <div
-          style={{
-            flexGrow: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            padding: '20px',
-            paddingTop: '90px',
-          }}
-        >
-          <h1
-            style={{
-              color: '#00695c',
-              fontSize: '4em',
-              margin: '0 0 20px',
-              fontFamily: "'Poppins', sans-serif",
-              textShadow: '2px 2px 8px rgba(0,0,0,0.3)',
-            }}
-          >
-            BODHARNAV
-          </h1>
-          <p
-            style={{
-              fontSize: '2em',
-              color: '#ef6c00',
-              marginBottom: '40px',
-              fontWeight: 'bold',
-              textShadow: '1px 1px 4px rgba(0,0,0,0.3)',
-            }}
-          >
-            WAY TO WISDOM
-          </p>
-          <button
-            onClick={() => scrollToRef(aboutRef)}
-            className="read-more-btn"
-          >
-            Read More
-          </button>
-        </div>
-      </section>
+  {/* Hero Content */}
+  <div className="hero-content">
+    <h1 className="hero-title">BODHARNAV</h1>
+    <p className="hero-subtitle">WAY TO WISDOM</p>
+    <button onClick={() => scrollToRef(aboutRef)} className="read-more-btn">
+      Read More
+    </button>
+  </div>
 
       {/* ABOUT US */}
       <section ref={aboutRef} style={{ padding: '100px 20px 60px', backgroundColor: '#fff' }}>
